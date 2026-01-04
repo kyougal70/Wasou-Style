@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Wasou Style | 日本の最新ファッション</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter and Noto Sans JP -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+      body {
+          font-family: 'Inter', 'Noto Sans JP', sans-serif;
+          background-color: #f7f7f7;
+          color: #1a202c;
+          transition: overflow 0.3s ease;
+      }
+      .text-jp {
+          font-family: 'Noto Sans JP', sans-serif;
+      }
+      .hero {
+          background-image: url('img/fashionHome.jpg');
+          background-size: cover;
+          background-position: center;
+      }
+      .collection-item {
+          position: relative;
+          overflow: hidden;
+      }
+      .collection-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
+          opacity: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: opacity 0.3s ease-in-out;
+      }
+      .collection-item:hover .collection-overlay {
+          opacity: 1;
+      }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="bg-white shadow-lg sticky top-0 z-50 rounded-b-lg">
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a class="text-3xl font-bold text-gray-800 tracking-wider" href="#">
+      Wasou Style
+    </a>
+    <div class="hidden md:flex items-center space-x-8 text-lg font-medium">
+      <a class="text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#new-arrivals">新作</a>
+      <a class="text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#collection">コレクション</a>
+      <a class="text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#featured">特集</a>
+      <a class="text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#about">ブランドについて</a>
+    </div>
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors duration-300" id="mobile-menu-button">
+      <svg class="lucide lucide-menu" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </nav>
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-white shadow-inner pb-4" id="mobile-menu">
+    <ul class="flex flex-col items-center space-y-4 text-base font-medium">
+      <li><a class="block w-full text-center py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#new-arrivals">新作</a></li>
+      <li><a class="block w-full text-center py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#collection">コレクション</a></li>
+      <li><a class="block w-full text-center py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#featured">特集</a></li>
+      <li><a class="block w-full text-center py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300" href="#about">ブランドについて</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+
+  <!-- Hero Section -->
+  <section class="hero text-white text-center py-24 md:py-36 rounded-2xl shadow-lg mb-12 flex items-center justify-center">
+    <div class="bg-black bg-opacity-40 rounded-xl p-8 max-w-2xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
+        Timeless Style, Modern Spirit
+      </h1>
+      <p class="text-2xl md:text-3xl font-medium text-jp mb-8">
+        時代を超えた美しさ、モダンな感性
+      </p>
+      <a class="bg-white text-gray-800 text-lg md:text-xl font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300" href="#new-arrivals">
+        最新のコレクションを見る
+      </a>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section class="mb-12" id="new-arrivals">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8 tracking-wide">新作 <span class="text-pink-500">到着</span></h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Product Card 1 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+        <img alt="Stylish Dress" class="w-full h-72 object-cover" src="img/elegantDress.jpg">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-1 text-gray-800 text-jp">
+            エレガントなドレス
+          </h3>
+          <p class="text-gray-500 text-sm mb-2">Elegant Dress</p>
+          <p class="text-2xl font-bold text-pink-500">¥12,800</p>
+          <button class="mt-4 w-full bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-500 transition-colors duration-300">
+            購入
+          </button>
+        </div>
+      </div>
+      <!-- Product Card 2 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+        <img alt="Modern Jacket" class="w-full h-72 object-cover" src="img/ModernJacket.jpg">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-1 text-gray-800 text-jp">
+            モダンジャケット
+          </h3>
+          <p class="text-gray-500 text-sm mb-2">Modern Jacket</p>
+          <p class="text-2xl font-bold text-pink-500">¥18,500</p>
+          <button class="mt-4 w-full bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-500 transition-colors duration-300">
+            購入
+          </button>
+        </div>
+      </div>
+      <!-- Product Card 3 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+        <img alt="Stylish Blouse" class="w-full h-72 object-cover" src="img/floralPrintBlouse.jpeg">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-1 text-gray-800 text-jp">
+            花柄ブラウス
+          </h3>
+          <p class="text-gray-500 text-sm mb-2">Floral Blouse</p>
+          <p class="text-2xl font-bold text-pink-500">¥8,900</p>
+          <button class="mt-4 w-full bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-500 transition-colors duration-300">
+            購入
+          </button>
+        </div>
+      </div>
+      <!-- Product Card 4 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+        <img alt="Wide Leg Pants" class="w-full h-72 object-cover" src="img/wideLegPants.jpg">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold mb-1 text-gray-800 text-jp">
+            ワイドレッグパンツ
+          </h3>
+          <p class="text-gray-500 text-sm mb-2">Wide-leg Pants</p>
+          <p class="text-2xl font-bold text-pink-500">¥10,200</p>
+          <button class="mt-4 w-full bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-500 transition-colors duration-300">
+            購入
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Look Section -->
+  <section class="mb-12" id="featured">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8 tracking-wide">今週の <span class="text-pink-500">特集</span></h2>
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+      <div class="md:w-1/2">
+        <img alt="Featured look" class="rounded-xl shadow-md w-full" src="img/styleFeatures.jpg">
+      </div>
+      <div class="md:w-1/2 text-center md:text-left">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-jp">
+          ミニマルな夏のスタイル
+        </h3>
+        <p class="text-xl text-gray-600 leading-relaxed mb-6">
+          軽やかな素材とシンプルなシルエットが特徴の、都会的な夏スタイル。エレガントなリネンドレスと、それに合わせた軽量のジャケットが、どんなシーンにもマッチします。
+        </p>
+        <a class="inline-block bg-pink-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-pink-600 transition-colors duration-300" href="#">
+          詳細を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections Section -->
+  <section class="mb-12" id="collection">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8 tracking-wide">最新 <span class="text-pink-500">コレクション</span></h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Collection Item 1 -->
+      <div class="collection-item rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
+        <img alt="Spring Collection" class="w-full h-96 object-cover rounded-xl" src="img/SpringCollection.jpg">
+        <div class="collection-overlay rounded-xl">
+          <h3 class="text-3xl font-bold text-white text-center text-jp">
+            春のコレクション
+          </h3>
+        </div>
+      </div>
+      <!-- Collection Item 2 -->
+      <div class="collection-item rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
+        <img alt="Summer Collection" class="w-full h-96 object-cover rounded-xl" src="img/SummerCollection.jpg">
+        <div class="collection-overlay rounded-xl">
+          <h3 class="text-3xl font-bold text-white text-center text-jp">
+            夏のコレクション
+          </h3>
+        </div>
+      </div>
+      <!-- Collection Item 3 -->
+      <div class="collection-item rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
+        <img alt="Autumn Collection" class="w-full h-96 object-cover rounded-xl" src="img/AutumnCollection.jpg">
+        <div class="collection-overlay rounded-xl">
+          <h3 class="text-3xl font-bold text-white text-center text-jp">
+            秋のコレクション
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="bg-pink-500 text-white p-8 md:p-12 rounded-2xl shadow-md mb-12 text-center">
+    <h2 class="text-4xl font-bold mb-4">最新情報をお届け</h2>
+    <p class="text-xl mb-6">
+      ニュースレターを購読して、新作や特別オファーの最新情報を手に入れましょう。
+    </p>
+    <!-- Updated form with POST request functionality -->
+    <form class="flex flex-col md:flex-row justify-center items-center gap-4 max-w-lg mx-auto" id="newsletter-form">
+      <input class="flex-1 w-full md:w-auto px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-shadow" id="email-input" placeholder="メールアドレス" required type="email">
+      <button class="w-full md:w-auto bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-900 transition-colors duration-300" type="submit">
+        登録
+      </button>
+    </form>
+    <p class="mt-4 text-sm font-semibold" id="newsletter-status"></p>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="bg-white p-8 md:p-12 rounded-2xl shadow-md mb-12" id="about">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-6">
+      ブランドについて
+    </h2>
+    <div class="text-center max-w-4xl mx-auto">
+      <p class="text-xl text-gray-700 leading-relaxed mb-4">
+        Wasou Styleは、日本の伝統的な美意識と現代的なストリートファッションを融合させたブランドです。私たちの服は、シンプルさと洗練されたディテールを大切にし、日常に特別な彩りを与えることを目指しています。
+      </p>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        At Wasou Style, we fuse traditional Japanese aesthetics with modern street fashion. Our apparel is designed with a focus on simplicity and refined detail, aiming to add a touch of something special to your everyday life. We believe fashion should be a form of self-expression, allowing you to tell your unique story.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer Section -->
+<footer class="bg-gray-800 text-white py-8 rounded-t-lg">
+  <div class="container mx-auto px-4 text-center">
+    <div class="mb-4">
+      <h3 class="text-2xl font-bold mb-2">Wasou Style</h3>
+      <p class="text-sm">日本のファッションを世界へ</p>
+    </div>
+    <p class="text-sm text-gray-500">
+      &copy; 2025 Wasou Style. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Smooth Scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Newsletter form submission logic
+  const newsletterForm = document.getElementById('newsletter-form');
+  const emailInput = document.getElementById('email-input');
+  const statusMessage = document.getElementById('newsletter-status');
+
+  newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const email = emailInput.value;
+    if (!email) {
+      statusMessage.textContent = 'メールアドレスを入力してください。'; // Please enter your email address.
+      statusMessage.classList.add('text-red-300');
+      return;
+    }
+
+    // Show a sending status
+    statusMessage.textContent = '送信中...'; // Sending...
+    statusMessage.classList.remove('text-red-300', 'text-green-300');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email })
+      });
+
+      if (response.ok) {
+        statusMessage.textContent = '登録が完了しました。ありがとうございます！'; // Registration complete. Thank you!
+        statusMessage.classList.add('text-green-300');
+        emailInput.value = ''; // Clear the input field
+      } else {
+        statusMessage.textContent = '送信中にエラーが発生しました。'; // An error occurred during submission.
+        statusMessage.classList.add('text-red-300');
+      }
+    } catch (error) {
+      statusMessage.textContent = 'ネットワークエラーが発生しました。'; // A network error occurred.
+      statusMessage.classList.add('text-red-300');
+      console.error('Fetch error:', error);
+    }
+  });
+</script>
+</body>
+</html>
